@@ -8,5 +8,5 @@ public class ErrorResponse {
 
     private HttpStatus status;
     private String message;
-    private String constraintErrors;
+    private String detail;
 }

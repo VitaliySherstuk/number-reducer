@@ -59,7 +59,7 @@ class PrinterControllerTest {
         //when
         MockHttpServletResponse response = mockMvc.perform(get("/printer/reducedPageNumbers")
                         .param("rawPageNumbers", pages))
-                .andExpect(status().isOk()).andReturn().getResponse();
+                .andExpect(status().isBadRequest()).andReturn().getResponse();
 
         ErrorResponse errorResponse = objectMapper.readValue(response.getContentAsString(), ErrorResponse.class);
 
