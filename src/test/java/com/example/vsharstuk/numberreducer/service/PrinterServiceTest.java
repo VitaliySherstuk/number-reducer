@@ -28,8 +28,20 @@ class PrinterServiceTest {
         assertEquals(expectedResult, result);
     }
 
+    @Test void reducePages_whenSingleElement() {
+        //given
+        String[] pages = {"1"};
+        String expectedResult = "1";
+
+        //when
+        String result = printerService.reducePages(pages);
+
+        //then
+        assertEquals(expectedResult, result);
+    }
+
     @Test
-    public void reducePages_WhenElementIsNull() {
+    public void reducePages_whenElementIsNull() {
         //given
         String[] pages = {"1","2","4","6","25", null};
         String expectedResult = "1-2,4,6,25";
@@ -42,7 +54,7 @@ class PrinterServiceTest {
     }
 
     @Test
-    public void reducePages_WhenElementIsEmpty() {
+    public void reducePages_whenElementIsEmpty() {
         //given
         String[] pages = {"1","2"," ","6","25", "4"};
         String expectedResult = "1-2,4,6,25";
