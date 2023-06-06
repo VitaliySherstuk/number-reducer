@@ -10,9 +10,13 @@ A service responsible for reducing list of print number pages and providing frie
     - cd docker/
     - docker-compose up -d
 
+### Run app by Spring Boot
+- run "NumberReducerApplication"
+- call endpoint: GET http://localhost:8080/printer/reducedPageNumbers?rawPageNumbers=${listPages}
+  Example: GET http://localhost:8080/printer/reducedPageNumbers?rawPageNumbers=1,2,3,4,5
+
 ## Docker registry
 vitaliysherstuk/number-reducer
-
 
 
 ## OpenAPI Docks
