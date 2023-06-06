@@ -10,3 +10,14 @@ A service responsible for reducing list of print number pages and providing frie
     - cd docker/
     - docker-compose up -d
 
+## Docker registry
+vitaliysherstuk/number-reducer
+
+
+
+## OpenAPI Docks
+http://{host}:{port}/api-docs
+
+
+## Swagger
+http://{host}:{port}/swagger-ui/index.html#
