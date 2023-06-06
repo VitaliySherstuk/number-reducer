@@ -34,7 +34,7 @@ class PrinterControllerTest {
 
 
     @Test
-    public void requestReducePages_correctInputData_returnStatusOk() throws Exception {
+    public void testReducePages_whenCorrectInputData_tenReturnStatusOk() throws Exception {
         //given
         String pages = "1,20,300,4";
         PageNumberListDto expectedResult = new PageNumberListDto(pages, pages);
@@ -54,7 +54,7 @@ class PrinterControllerTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "a,1,2,3", "1,2,a,4", "1,3,a", "1,-2,3"})
-    public void requestReducePages_incorrectInputData_returnBadRequest(String pages) throws Exception {
+    public void testReducePages_whenIncorrectInputData_thanReturnBadRequest(String pages) throws Exception {
 
         //when
         MockHttpServletResponse response = mockMvc.perform(get("/printer/reducedPageNumbers")
@@ -68,7 +68,7 @@ class PrinterControllerTest {
     }
 
     @Test
-    public void requestReducePages_returnInternalError() throws Exception {
+    public void testReducePages_thenReturnInternalError() throws Exception {
         //given
         String pages = "1,20,300,4";
 

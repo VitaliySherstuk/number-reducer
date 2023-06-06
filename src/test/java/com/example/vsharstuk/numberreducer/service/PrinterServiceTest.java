@@ -16,7 +16,7 @@ class PrinterServiceTest {
     }
 
     @Test
-    public void reducePages() {
+    public void testReducePages() {
         //given
         String[] pages = {"1","2","4","6","25","9","26","27","28","5"};
         String expectedResult = "1-2,4-6,9,25-28";
@@ -28,7 +28,7 @@ class PrinterServiceTest {
         assertEquals(expectedResult, result);
     }
 
-    @Test void reducePages_whenSingleElement() {
+    @Test void testReducePages_whenSingleElement() {
         //given
         String[] pages = {"1"};
         String expectedResult = "1";
@@ -41,7 +41,7 @@ class PrinterServiceTest {
     }
 
     @Test
-    public void reducePages_whenElementIsNull() {
+    public void testReducePages_whenElementIsNull() {
         //given
         String[] pages = {"1","2","4","6","25", null};
         String expectedResult = "1-2,4,6,25";
@@ -54,7 +54,7 @@ class PrinterServiceTest {
     }
 
     @Test
-    public void reducePages_whenElementIsEmpty() {
+    public void testReducePages_whenElementIsEmpty() {
         //given
         String[] pages = {"1","2"," ","6","25", "4"};
         String expectedResult = "1-2,4,6,25";
