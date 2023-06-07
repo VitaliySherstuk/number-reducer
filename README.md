@@ -6,9 +6,10 @@ A service responsible for reducing list of print number pages and providing frie
 ### Run a Docker
 - install Docker from Management Software Center
 - clone project from git repo: https://github.com/VitaliySherstuk/number-reducer
+- build docker image
+  - docker build -f ./docker/Dockerfile -t vitaliysherstuk/number-reducer:{version} .
 - run docker-compose (/docker/docker-compose.yml)
-    - cd docker/
-    - docker-compose up -d
+  - docker-compose -f docker/docker-compose.yaml up -d
 
 ### Run app by Spring Boot
 - run "NumberReducerApplication"
@@ -20,7 +21,7 @@ A service responsible for reducing list of print number pages and providing frie
 ### Docker registry
 vitaliysherstuk/number-reducer
 
-### Build docker image
+### Build docker image and push to Docker registry
 - docker build -f ./docker/Dockerfile -t vitaliysherstuk/number-reducer .
 - docker login
 - docker push vitaliysherstuk/number-reducer:{version}
