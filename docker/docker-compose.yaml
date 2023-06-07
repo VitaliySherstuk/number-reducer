@@ -2,7 +2,9 @@ version: "3"
 
 services:
   number-reducer:
-    build: ../
+    build: 
+        context: ../
+        dockerfile: docker/Dockerfile
     ports:
       - 8080:8080
     restart: always
