@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: number-reducer-web
-          image: vitaliysherstuk/number-reducer:latest
+          image: vitaliysherstuk/number-reducer:0.0.1
           ports:
             - containerPort: 8080
 
@@ -25,7 +25,7 @@ kind: Service
 metadata:
   name: number-reducer-service
   labels:
-    env: prod
+    env: DEV
 spec:
   selector:
     project: number-reducer
@@ -33,3 +33,5 @@ spec:
     - name: number-reducer-listener
       protocol: TCP
       port: 8080
+      targetPort: 8080
+  type: LoadBalancer

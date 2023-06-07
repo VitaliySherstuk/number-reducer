@@ -1,6 +1,9 @@
 version: "3"
 
 services:
-  regionservice:
-    build: ./
+  number-reducer:
+    build: ../
+    dockerfile: docker/Dockerfile
+    ports:
+      - 8080:8080
     restart: always
