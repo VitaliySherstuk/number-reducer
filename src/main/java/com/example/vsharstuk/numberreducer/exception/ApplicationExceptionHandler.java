@@ -32,4 +32,13 @@ public class ApplicationExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 
+    @ExceptionHandler(BadRequestException.class)
+    protected ResponseEntity<ErrorResponse> handleBadRequestException(Exception exception) {
+        log.error("Handle bad request exception", exception);
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setStatus(HttpStatus.BAD_REQUEST);
+        errorResponse.setMessage(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
 }

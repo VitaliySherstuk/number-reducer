@@ -1,5 +1,6 @@
 package com.example.vsharstuk.numberreducer.service;
 
+import com.example.vsharstuk.numberreducer.exception.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -44,9 +45,17 @@ public class PrinterService {
     private List<Integer> getUniqueSortedPagesList(String[] pages) {
         return Arrays.stream(pages)
                 .filter(StringUtils::isNotBlank)
-                .map(Integer::parseInt)
+                .map(this::convertToInteger)
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    private int convertToInteger(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new BadRequestException("Input is too long. Max number is " + Integer.MAX_VALUE);
+        }
     }
 }

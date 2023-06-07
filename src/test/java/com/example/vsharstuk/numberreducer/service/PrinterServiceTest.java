@@ -1,9 +1,11 @@
 package com.example.vsharstuk.numberreducer.service;
 
+import com.example.vsharstuk.numberreducer.exception.BadRequestException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class PrinterServiceTest {
@@ -64,5 +66,21 @@ class PrinterServiceTest {
 
         //then
         assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void testReducePages_whenElementIsTooLong_thenThrowBadRequestException() {
+        //given & when
+        String[] pages = {"1","2","4","6","25", "2147483648"};
+
+        Exception exception = assertThrows(BadRequestException.class, () -> {
+            printerService.reducePages(pages);
+        });
+
+        String expectedMessage = "Input is too long. Max number is " + Integer.MAX_VALUE;
+        String actualMessage = exception.getMessage();
+
+        //then
+        assertEquals(expectedMessage, actualMessage);
     }
 }
